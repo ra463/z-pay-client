@@ -1,0 +1,100 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&family=Source+Sans+Pro:wght@300;400&display=swap");
+* {
+    font-family: "Roboto", sans-serif;
+    font-family: "Source Sans Pro", sans-serif;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+body {
+    background: #3a3b3c;
+}
+
+.no_blogs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    color: #bdc1c6;
+    font-weight: bold;
+    font-size: 2.5rem;
+}
+
+.loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    color: #bdc1c6;
+    font-weight: bold;
+    font-size: 2.5rem;
+}
+
+::-webkit-scrollbar {
+    width: 2px;
+    height: 4px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    width: 2px;
+    background: #888;
+}
+
+.paination {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    align-items: center;
+    margin: auto;
+    color: #bdc1c6;
+    font-weight: bold;
+    font-size: 2.5rem;
+
+    button {
+        padding: 7px;
+        outline: none;
+        color: #f1f1f1;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+        background: rgb(63, 158, 190);
+
+        &:hover {
+            background: #67686857;
+        }
+
+        &:nth-child(1) {
+            background: #ff3f62;
+
+            &:hover {
+                background: #67686857;
+            }
+        }
+        &:nth-last-child(1) {
+            background: #ff3f62;
+            &:hover {
+                background: #64666857;
+            }
+        }
+
+        &:disabled {
+            cursor: not-allowed;
+            background: #67686857;
+        }
+    }
+}

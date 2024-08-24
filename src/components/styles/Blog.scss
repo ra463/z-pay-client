@@ -1,0 +1,244 @@
+.blog_details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #3a3b3c;
+    min-height: 100vh;
+
+    .blog {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px min(25vw, 250px);
+
+        .genure {
+            padding: 3px 10px;
+            border-radius: 50px;
+            background: #ff3f62;
+            color: #fff;
+            width: fit-content;
+        }
+
+        .title {
+            color: #fff;
+            font-family: "Lora", serif;
+        }
+
+        .date {
+            display: flex;
+            gap: 20px;
+            position: relative;
+
+            div {
+                display: flex;
+                flex-direction: column;
+
+                span {
+                    color: #bdc1c6;
+                    &:nth-child(1) {
+                        color: #fff;
+                        font-weight: bold;
+                    }
+                }
+            }
+
+            .btns {
+                display: flex;
+                flex-direction: row;
+                position: absolute;
+                right: 0;
+                gap: 10px;
+
+                button {
+                    display: flex;
+                    align-items: center;
+                    gap: 5px;
+                    outline: none;
+                    border: none;
+                    padding: 10px;
+                    border-radius: 5px;
+                    color: #fff;
+                    cursor: pointer;
+
+                    span {
+                        display: flex;
+                        align-items: center;
+                        gap: 5px;
+                    }
+
+                    &:nth-child(1) {
+                        background: green;
+                    }
+
+                    &:nth-child(2) {
+                        background: red;
+                    }
+
+                    &:hover {
+                        background: #c9cece5f;
+                    }
+                }
+            }
+        }
+
+        .img {
+            display: flex;
+            gap: 20px;
+            max-width: 100%;
+            overflow: auto;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 5px;
+            }
+        }
+
+        .desc {
+            margin-top: 10px;
+            padding: 10px;
+            border: 1px solid #828486;
+            border-radius: 10px;
+            color: #bdc1c6;
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 30px;
+            text-align: justify;
+            // word-break: break-word;
+            white-space: pre-line;
+        }
+
+        .add_comment {
+            display: flex;
+            background: #828486;
+            padding: 10px;
+            border-radius: 10px;
+            flex-direction: column;
+            gap: 5px;
+
+            span {
+                font-size: 1.2rem;
+                font-weight: bold;
+                color: #fff;
+            }
+
+            .input_comment {
+                display: flex;
+                gap: 10px;
+                input {
+                    outline: none;
+                    border: none;
+                    padding: 10px;
+                    resize: none;
+                    background: #bdc1c6;
+                    color: #3a3b3c;
+                    width: 100%;
+                    border-radius: 50px;
+
+                    &::placeholder {
+                        color: #3a3b3c;
+                    }
+                }
+
+                button {
+                    background: #ff3f62;
+                    cursor: pointer;
+                    outline: none;
+                    border: none;
+                    border-radius: 50px;
+                    padding: 10px;
+                    color: #fff;
+                }
+            }
+        }
+
+        .all_comments {
+            background: #828486;
+            padding: 10px;
+            border-radius: 10px;
+            flex-direction: column;
+            gap: 10px;
+
+            .head {
+                font-size: 1.2rem;
+                font-weight: bold;
+                color: #fff;
+            }
+
+            .comments {
+                display: flex;
+                flex-direction: column;
+                margin-top: 10px;
+                gap: 10px;
+
+                .comment_box {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    .comment {
+                        display: flex;
+                        gap: 5px;
+
+                        img {
+                            width: 35px;
+                            height: 35px;
+                            border-radius: 50%;
+                            object-fit: cover;
+                        }
+
+                        .content {
+                            display: flex;
+                            flex-direction: column;
+                            // gap: 5px;
+
+                            .name {
+                                display: flex;
+                                gap: 10px;
+                                justify-content: space-between;
+                                align-items: center;
+
+                                .user_name {
+                                    font-size: 0.9rem;
+                                    color: #bdc1c6;
+                                }
+
+                                .date {
+                                    color: #bdc1c6;
+                                    font-size: 0.8rem;
+                                }
+                            }
+
+                            .comment_text {
+                                font-size: 0.9rem;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 980px) {
+    .blog_details {
+        .blog {
+            padding: 10px min(20vw, 200px);
+        }
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .blog_details {
+        .blog {
+            padding: 10px min(15vw, 150px);
+        }
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .blog_details {
+        .blog {
+            padding: 10px 2rem;
+        }
+    }
+}
