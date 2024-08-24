@@ -114,116 +114,117 @@ const Blog = () => {
   return (
     <>
       <Header />
-      <div className="blog_details">
-        {loading && (
-          <div className="loader">
-            <PulseLoader size={15} color="#36d7b7" />
-          </div>
-        )}
-        <div className="blog">
-          <span className="genure">{blog?.genure}</span>
-          <h1 className="title">{blog?.title}</h1>
-          <div className="date">
-            <div>
-              <span>Published</span>
-              <span>{moment(blog?.createdAt).fromNow()}</span>
-            </div>
-            <div>
-              <span>Author</span>
-              <span>{blog?.user?.name}</span>
-            </div>
-            {token && blog?.user?._id === userId && (
-              <div className="btns">
-                <button onClick={() => setShowUpdateBlog(true)}>
-                  <MdEdit />
-                  Edit
-                </button>
-                <button
-                  disabled={delLoading}
-                  onClick={() => handleDelete(blog._id)}
-                >
-                  {delLoading ? (
-                    <PulseLoader size={5} color="#fff" />
-                  ) : (
-                    <span>
-                      <MdDelete />
-                      Delete
-                    </span>
-                  )}
-                </button>
+      {loading ? (
+        <div className="loader">
+          <PulseLoader size={15} color="#36d7b7" />
+        </div>
+      ) : (
+        <div className="blog_details">
+          <div className="blog">
+            <span className="genure">{blog?.genure}</span>
+            <h1 className="title">{blog?.title}</h1>
+            <div className="date">
+              <div>
+                <span>Published</span>
+                <span>{moment(blog?.createdAt).fromNow()}</span>
               </div>
-            )}
-          </div>
-          <div className="img">
-            {blog &&
-              blog?.images?.length > 0 &&
-              blog?.images.map((image, i) => (
-                <img
-                  key={i}
-                  src={image.url}
-                  alt="blog"
-                  className="blog_image"
-                />
-              ))}
-          </div>
-          <div className="desc">{blog?.description}</div>
-          <div className="add_comment">
-            <span>Add Comment</span>
-            <form onSubmit={handleComment} className="input_comment">
-              <input
-                type="text"
-                required
-                rows="2"
-                cols="50"
-                placeholder="Write your comment..."
-                value={text}
-                onChange={(e) => setText(e.target.value)}
-              />
-              <button type="submit">Comment</button>
-            </form>
-          </div>
-          <div className="all_comments">
-            <span className="head">All Comments</span>
-            {commentLoading && <div className="loader"></div>}
-            <div className="comments">
-              {comments && comments?.length > 0 ? (
-                comments?.map((comment, i) => (
-                  <div className="comment_box" key={i}>
-                    <div className="comment">
-                      <img
-                        src="https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg"
-                        alt="user"
-                      />
-                      <div className="content">
-                        <div className="name">
-                          <span className="user_name">
-                            {comment?.user?.name}
-                          </span>
-                          <span className="date">
-                            {moment(comment?.createdAt).fromNow()}
-                          </span>
-                        </div>
-                        <span className="comment_text">{comment?.text}</span>
-                      </div>
-                    </div>
-                    {token && userId === comment?.user?._id && (
-                      <MdDelete
-                        onClick={() => handleDeleteComment(comment?._id)}
-                        style={{ cursor: "pointer" }}
-                      />
+              <div>
+                <span>Author</span>
+                <span>{blog?.user?.name}</span>
+              </div>
+              {token && blog?.user?._id === userId && (
+                <div className="btns">
+                  <button onClick={() => setShowUpdateBlog(true)}>
+                    <MdEdit />
+                    Edit
+                  </button>
+                  <button
+                    disabled={delLoading}
+                    onClick={() => handleDelete(blog._id)}
+                  >
+                    {delLoading ? (
+                      <PulseLoader size={5} color="#fff" />
+                    ) : (
+                      <span>
+                        <MdDelete />
+                        Delete
+                      </span>
                     )}
-                  </div>
-                ))
-              ) : (
-                <div className="no_comments">Be the first to comment !!</div>
+                  </button>
+                </div>
               )}
             </div>
+            <div className="img">
+              {blog &&
+                blog?.images?.length > 0 &&
+                blog?.images.map((image, i) => (
+                  <img
+                    key={i}
+                    src={image.url}
+                    alt="blog"
+                    className="blog_image"
+                  />
+                ))}
+            </div>
+            <div className="desc">{blog?.description}</div>
+            <div className="add_comment">
+              <span>Add Comment</span>
+              <form onSubmit={handleComment} className="input_comment">
+                <input
+                  type="text"
+                  required
+                  rows="2"
+                  cols="50"
+                  placeholder="Write your comment..."
+                  value={text}
+                  onChange={(e) => setText(e.target.value)}
+                />
+                <button type="submit">Comment</button>
+              </form>
+            </div>
+            <div className="all_comments">
+              <span className="head">All Comments</span>
+              {commentLoading && <div className="loader"></div>}
+              <div className="comments">
+                {comments && comments?.length > 0 ? (
+                  comments?.map((comment, i) => (
+                    <div className="comment_box" key={i}>
+                      <div className="comment">
+                        <img
+                          src="https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg"
+                          alt="user"
+                        />
+                        <div className="content">
+                          <div className="name">
+                            <span className="user_name">
+                              {comment?.user?.name}
+                            </span>
+                            <span className="date">
+                              {moment(comment?.createdAt).fromNow()}
+                            </span>
+                          </div>
+                          <span className="comment_text">{comment?.text}</span>
+                        </div>
+                      </div>
+                      {token && userId === comment?.user?._id && (
+                        <MdDelete
+                          onClick={() => handleDeleteComment(comment?._id)}
+                          style={{ cursor: "pointer" }}
+                        />
+                      )}
+                    </div>
+                  ))
+                ) : (
+                  <div className="no_comments">Be the first to comment !!</div>
+                )}
+              </div>
+            </div>
           </div>
+          {showUpdateBlog && (
+            <UpdateBlog setShowUpdateBlog={setShowUpdateBlog} id={blog._id} />
+          )}
         </div>
-        {showUpdateBlog && (
-          <UpdateBlog setShowUpdateBlog={setShowUpdateBlog} id={blog._id} />
-        )}
-      </div>
+      )}
       <Footer />
     </>
   );

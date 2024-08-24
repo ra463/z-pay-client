@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllBlogs } from "../features/apiCall";
 import CustomPagination from "../utils/CustomPagination";
 import Footer from "../components/Footer/Footer";
+import PulseLoader from "react-spinners/PulseLoader";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -66,25 +67,33 @@ const Home = () => {
           </select>
         </div>
         <div className={`all_blogs ${blogs.length === 0 ? "em_blogs" : ""}`}>
-          {blogs && blogs.length > 0 ? (
-            blogs.map((blog, i) => (
-              <div key={i} className="blog">
-                <img src={blog.images[0].url} alt="blog" />
-                <div className="details">
-                  <span className="tag">{blog?.genure}</span>
-                  <h3>{blog.title}</h3>
-                  <p>{blog.description.slice(0, 100).concat("...")}</p>
-                  <span
-                    onClick={() => navigate(`/blog/${blog._id}`)}
-                    className="read_more"
-                  >
-                    Read More
-                  </span>
-                </div>
-              </div>
-            ))
+          {loading ? (
+            <div className="loader">
+              <PulseLoader size={15} color="#36d7b7" />
+            </div>
           ) : (
-            <div className="no_blogs">No blogs Found</div>
+            <>
+              {blogs && blogs.length > 0 ? (
+                blogs.map((blog, i) => (
+                  <div key={i} className="blog">
+                    <img src={blog.images[0].url} alt="blog" />
+                    <div className="details">
+                      <span className="tag">{blog?.genure}</span>
+                      <h3>{blog.title}</h3>
+                      <p>{blog.description.slice(0, 100).concat("...")}</p>
+                      <span
+                        onClick={() => navigate(`/blog/${blog._id}`)}
+                        className="read_more"
+                      >
+                        Read More
+                      </span>
+                    </div>
+                  </div>
+                ))
+              ) : (
+                <div className="no_blogs">No blogs Found</div>
+              )}
+            </>
           )}
         </div>
         {resultPerPage < blogsCount && !loading && (
