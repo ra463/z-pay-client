@@ -21,7 +21,7 @@ const App = () => {
     <Router>
       <Suspense
         fallback={
-          <div className="loader">
+          <div className="load">
             <PulseLoader size={15} color="#36d7b7" />
           </div>
         }

@@ -166,7 +166,10 @@ const Blog = () => {
                   />
                 ))}
             </div>
-            <div className="desc">{blog?.description}</div>
+            <div className="desc">
+              <h2>Content</h2>
+              {blog?.description}
+            </div>
             <div className="add_comment">
               <span>Add Comment</span>
               <form onSubmit={handleComment} className="input_comment">

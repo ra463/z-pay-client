@@ -66,7 +66,11 @@ const Home = () => {
             ))}
           </select>
         </div>
-        <div className={`all_blogs ${blogs.length === 0 ? "em_blogs" : ""}`}>
+        <div
+          className={`all_blogs ${
+            blogs.length === 0 || loading ? "em_blogs" : ""
+          }`}
+        >
           {loading ? (
             <div className="loader">
               <PulseLoader size={15} color="#36d7b7" />
