@@ -62,7 +62,7 @@ const Register = () => {
       </header>
       <div className="login-div">
         <form className="loginform" onSubmit={loginHandler}>
-          <h2>Login</h2>
+          <h2>Register Here!</h2>
           <span className="head">Welcome Back! Please enter your details.</span>
           <p className="name">Full Name</p>
           <input
