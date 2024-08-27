@@ -81,7 +81,7 @@ const Header = () => {
                 <Link className="login" to="/login">
                   <span>LogIn</span>
                 </Link>
-                <Link className="login" to="/signup">
+                <Link className="login" to="/register">
                   <span>SignUp</span>
                 </Link>
               </>
